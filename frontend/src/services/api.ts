@@ -108,6 +108,29 @@ export interface DecisionResult {
   disaster: { name: string; type: string; severity: string; distance_km: number };
 }
 
+export interface TrendDataPoint {
+  date: string;
+  avg_risk_score: number;
+  alert_count: number;
+}
+
+export interface PopulationStat {
+  disaster_type: string;
+  affected_population: number;
+}
+
+export interface ReverseGeocodeResult {
+  found: boolean;
+  zone_name?: string;
+  risk_level?: string;
+  latitude?: number;
+  longitude?: number;
+  radius_km?: number;
+  population_density?: number;
+  distance_km?: number;
+  message?: string;
+}
+
 export const authAPI = {
   login: (username: string, password: string) =>
     api.post('/auth/login', { username, password }).then(r => r.data),
@@ -126,6 +149,12 @@ export const riskAPI = {
   getServers: () => api.get<ServerStatus[]>('/servers').then(r => r.data),
   getDecision: (lat: number, lng: number, disasterId?: number) =>
     api.post<DecisionResult>('/decision', null, { params: { lat, lng, disaster_id: disasterId } }).then(r => r.data),
+  getTrends: (period = 'week') =>
+    api.get<TrendDataPoint[]>('/stats/trends', { params: { period } }).then(r => r.data),
+  getPopulationStats: (period = 'week') =>
+    api.get<PopulationStat[]>('/stats/population', { params: { period } }).then(r => r.data),
+  reverseGeocode: (lat: number, lng: number) =>
+    api.get<ReverseGeocodeResult>('/stats/reverse-geocode', { params: { lat, lng } }).then(r => r.data),
 };
 
 export default api;
