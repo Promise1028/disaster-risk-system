@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { MapContainer, TileLayer, Circle, Marker, Popup, Polyline, useMap, useMapEvents } from 'react-leaflet';
 import { Row, Col, Card, Select, Descriptions, Tag, Button, Spin, message, Segmented } from 'antd';
-import { EnvironmentOutlined, AimOutlined, ExpandOutlined, CompressOutlined } from '@ant-design/icons';
+import { AimOutlined, ExpandOutlined, CompressOutlined } from '@ant-design/icons';
 import { useSearchParams } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -77,10 +77,9 @@ function EvacuationPlanner({ onRoute }: { onRoute: (route: [number, number][], i
 }
 
 export default function RiskMapPage() {
-  const [searchParams] = useSearchParams();
   const [riskZones, setRiskZones] = useState<RiskZone[]>([]);
   const [safeZones, setSafeZones] = useState<SafeZone[]>([]);
-  const [disasters, setDisasters] = useState<DisasterEvent[]>([]);
+  const [, setDisasters] = useState<DisasterEvent[]>([]);
   const [allDisasters, setAllDisasters] = useState<DisasterEvent[]>([]);
   const [evacRoutes, setEvacRoutes] = useState<EvacuationRoutesData[]>([]);
   const [decision, setDecision] = useState<DecisionResult | null>(null);

@@ -30,15 +30,14 @@ export default function CriticalAlertModal({ alert, onClose }: Props) {
       centered
       width={460}
       styles={{
-        content: {
+        header: { background: 'transparent' },
+        body: {
           background: '#1a0a0a',
           border: '1px solid rgba(255, 77, 79, 0.4)',
           boxShadow: '0 0 40px rgba(255, 77, 79, 0.3), 0 0 80px rgba(255, 77, 79, 0.1)',
           borderRadius: 16,
           animation: 'critical-pulse 2s ease-in-out infinite',
         },
-        header: { background: 'transparent' },
-        body: { background: 'transparent' },
       }}
       title={
         <Space>

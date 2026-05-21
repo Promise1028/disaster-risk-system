@@ -11,7 +11,7 @@ interface Props {
   popStats: PopulationStat[];
 }
 
-export default function ExportButtons({ stats, assessments, trends, popStats }: Props) {
+export default function ExportButtons({ stats, assessments, trends }: Props) {
   const exportExcel = () => {
     const ws1 = XLSX.utils.json_to_sheet(assessments.map(a => ({
       '区域': a.zone_name,

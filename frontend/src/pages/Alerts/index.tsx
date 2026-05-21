@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
-import { Card, Table, Tag, Timeline, Spin, Switch, Space, Button } from 'antd';
+import { Card, Table, Tag, Timeline, Switch, Space, Button } from 'antd';
 import { AlertOutlined, WarningOutlined, InfoCircleOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { riskAPI } from '../../services/api';
