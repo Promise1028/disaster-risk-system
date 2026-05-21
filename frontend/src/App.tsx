@@ -19,7 +19,7 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <ConfigProvider locale={zhCN}>
-      <BrowserRouter basename="/disaster-risk-system">
+      <BrowserRouter basename={import.meta.env.BASE_URL !== './' ? import.meta.env.BASE_URL : '/'}>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route
