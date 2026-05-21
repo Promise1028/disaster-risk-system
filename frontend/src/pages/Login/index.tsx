@@ -36,9 +36,12 @@ export default function Login() {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: 'var(--bg-primary)' }}>
       <Card style={{ width: 420, boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
-        <h1 style={{ textAlign: 'center', marginBottom: 32, color: '#333' }}>灾害风险评估系统</h1>
+        <div style={{ textAlign: 'center', marginBottom: 32 }}>
+  <div style={{ fontSize: 28, fontWeight: 700, color: '#1890ff', marginBottom: 4 }}>险析</div>
+  <div style={{ fontSize: 13, color: '#8c8c8c' }}>智能灾害风险评估与应急决策系统</div>
+</div>
         <Tabs
           centered
           items={[
