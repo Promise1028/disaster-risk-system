@@ -95,6 +95,8 @@ export interface AlertRecord {
   content: string;
   is_active: boolean;
   created_at: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 export interface DecisionResult {
