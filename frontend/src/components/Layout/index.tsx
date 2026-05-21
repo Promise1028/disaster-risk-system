@@ -20,8 +20,8 @@ const menuItems = [
   { key: '/map', icon: <EnvironmentOutlined />, label: '风险地图' },
   { key: '/alerts', icon: <AlertOutlined />, label: '预警中心' },
   { key: '/servers', icon: <CloudServerOutlined />, label: '服务器管理' },
-  { key: '/command', icon: <AimOutlined />, label: '应急指挥', disabled: true },
-  { key: '/history', icon: <HistoryOutlined />, label: '历史记录', disabled: true },
+  { key: '/command', icon: <AimOutlined />, label: '应急指挥' },
+  { key: '/history', icon: <HistoryOutlined />, label: '历史记录' },
 ];
 
 export default function AdminLayout() {
@@ -84,7 +84,7 @@ export default function AdminLayout() {
           mode="inline"
           selectedKeys={[menuKey]}
           items={menuItems}
-          onClick={({ key }) => { if (key !== '/command' && key !== '/history') navigate(key); }}
+          onClick={({ key }) => navigate(key)}
           style={{
             background: 'transparent',
             borderInlineEnd: 'none',

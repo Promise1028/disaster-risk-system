@@ -6,6 +6,8 @@ import Dashboard from './pages/Dashboard';
 import RiskMapPage from './pages/RiskMap';
 import ServerManagement from './pages/ServerManagement';
 import AlertsPage from './pages/Alerts';
+import EmergencyCommand from './pages/EmergencyCommand';
+import HistoryRecords from './pages/HistoryRecords';
 import Login from './pages/Login';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
@@ -31,6 +33,8 @@ export default function App() {
             <Route path="/map" element={<RiskMapPage />} />
             <Route path="/servers" element={<ServerManagement />} />
             <Route path="/alerts" element={<AlertsPage />} />
+            <Route path="/command" element={<EmergencyCommand />} />
+            <Route path="/history" element={<HistoryRecords />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
