@@ -34,7 +34,7 @@ jobs:
       - name: Build frontend
         run: cd frontend && npm run build
         env:
-          VITE_API_BASE_URL: https://c1527c70d338c2.lhr.life
+          VITE_API_BASE_URL: https://40e42fdc3f57ab.lhr.life
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
