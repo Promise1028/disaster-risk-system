@@ -34,7 +34,7 @@ jobs:
       - name: Build frontend
         run: cd frontend && npm run build
         env:
-          VITE_API_BASE_URL: https://499e233b54c8c6.lhr.life
+          VITE_API_BASE_URL: https://417a6fca9949b3.lhr.life
 
       - name: Copy index.html to 404.html for SPA routing
         run: cp frontend/dist/index.html frontend/dist/404.html
