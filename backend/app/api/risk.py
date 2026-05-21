@@ -37,8 +37,17 @@ async def get_dashboard(db: AsyncSession = Depends(get_db)):
 
 
 @router.get("/risk-zones", response_model=list[RiskZoneResponse])
-async def get_risk_zones(db: AsyncSession = Depends(get_db)):
-    result = await db.execute(select(RiskZone))
+async def get_risk_zones(
+    types: Optional[str] = Query(default=None, description="Comma-separated disaster types"),
+    db: AsyncSession = Depends(get_db),
+):
+    q = select(RiskZone)
+    if types:
+        type_list = [t.strip() for t in types.split(",")]
+        q = q.join(DisasterEvent, RiskZone.disaster_id == DisasterEvent.id, isouter=True).where(
+            DisasterEvent.disaster_type.in_(type_list)
+        )
+    result = await db.execute(q)
     return result.scalars().all()
 
 
@@ -58,8 +67,15 @@ async def get_safe_zones(db: AsyncSession = Depends(get_db)):
 
 
 @router.get("/disasters", response_model=list[DisasterEventResponse])
-async def get_disasters(db: AsyncSession = Depends(get_db)):
-    result = await db.execute(select(DisasterEvent).order_by(DisasterEvent.created_at.desc()))
+async def get_disasters(
+    types: Optional[str] = Query(default=None, description="Comma-separated disaster types"),
+    db: AsyncSession = Depends(get_db),
+):
+    q = select(DisasterEvent).order_by(DisasterEvent.created_at.desc())
+    if types:
+        type_list = [t.strip() for t in types.split(",")]
+        q = q.where(DisasterEvent.disaster_type.in_(type_list))
+    result = await db.execute(q)
     return result.scalars().all()
 
 
