@@ -36,6 +36,9 @@ jobs:
         env:
           VITE_API_BASE_URL: https://40e42fdc3f57ab.lhr.life
 
+      - name: Copy index.html to 404.html for SPA routing
+        run: cp frontend/dist/index.html frontend/dist/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
