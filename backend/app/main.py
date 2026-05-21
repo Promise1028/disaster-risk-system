@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from app.database import init_db
-from app.api import auth, risk, websocket
+from app.api import auth, risk, websocket, stats
 
 
 @asynccontextmanager
@@ -26,6 +26,7 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(risk.router)
 app.include_router(websocket.router)
+app.include_router(stats.router)
 
 # Serve frontend static files
 import os
