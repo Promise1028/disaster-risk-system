@@ -106,7 +106,7 @@ export default function RiskMapPage() {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/evacuation-routes')
+    fetch(`${import.meta.env.VITE_API_BASE_URL || ''}/api/evacuation-routes`)
       .then(r => r.json()).then(setEvacRoutes).catch(() => {});
   }, []);
 

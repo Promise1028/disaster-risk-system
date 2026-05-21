@@ -7,8 +7,10 @@ export function useWebSocket(endpoint: string, onMessage: MessageHandler) {
   const reconnectTimer = useRef<number>(0);
 
   const connect = useCallback(() => {
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const ws = new WebSocket(`${protocol}//${window.location.host}${endpoint}`);
+    const apiHost = import.meta.env.VITE_API_BASE_URL || `${window.location.protocol}//${window.location.host}`;
+    const wsProtocol = apiHost.startsWith('https') ? 'wss:' : 'ws:';
+    const host = apiHost.replace(/^https?:\/\//, '');
+    const ws = new WebSocket(`${wsProtocol}//${host}${endpoint}`);
     wsRef.current = ws;
 
     ws.onmessage = (event) => {
